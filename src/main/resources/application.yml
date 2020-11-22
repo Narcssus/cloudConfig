@@ -1,0 +1,25 @@
+# 服务端口
+server:
+  port: 8001
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:properties/ # 搜索src/main/resource 下的properties文件夹下的文件
+  profiles:
+    active: native  # 配置使用本地储存
+eureka:
+  client:
+    service-url:
+      defaultZone: http://test:narc1234@eurekaServer2:80/eureka/,http://test:narc1234@eurekaServer1:80/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: 106.52.120.197:8001
+logging:
+  level:
+    org.springframework: debug
+  file:
+    name: ./logs/config.log
